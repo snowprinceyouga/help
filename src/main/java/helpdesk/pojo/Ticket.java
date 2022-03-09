@@ -13,7 +13,6 @@ public class Ticket {
     @Column(name = "ticket_id")
     private Integer ticketId;
 
-
     @Column(name = "client_id")
     private Integer clientId;
 
