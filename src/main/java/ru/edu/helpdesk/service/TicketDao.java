@@ -1,6 +1,6 @@
-package helpdesk.service;
+package ru.edu.helpdesk.service;
 
-import helpdesk.pojo.Ticket;
+import ru.edu.helpdesk.entity.Ticket;
 
 public interface TicketDao {
 
