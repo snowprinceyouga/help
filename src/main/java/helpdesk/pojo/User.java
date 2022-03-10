@@ -13,6 +13,12 @@ public class User {
     @Column(name = "user_id")
     private Integer userId;
 
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
     @Column(name = "role")
     private String role;
 
