@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Bank</title>
+    <title>helpdesk</title>
 </head>
 <body>
-<h2>Welcome to Bank</h2>
-<span th:text="${name}"></span>
+<h2>Welcome to helpdesk</h2>
+<div th:each="ticket : ${tickets}">
+    <a th:href="@{/ticket/{id}(id = ${ticket.getId()})}" th:text="${ticket.getTitle()}">title</a>
+
+</div>
 </body>
 </html>
