@@ -2,6 +2,8 @@ package ru.edu.helpdesk.service;
 
 import ru.edu.helpdesk.entity.Ticket;
 
+import java.util.List;
+
 public interface TicketDao {
 
     /**
@@ -15,5 +17,10 @@ public interface TicketDao {
      * @param id
      * @return Ticket
      */
-    Ticket ticketInfo(Integer id);
+    Ticket ticketInfo(long id);
+
+    /**
+     * найти все ticket по id клиента
+     */
+    List<Ticket> allTicketsByClientId(long clientId);
 }

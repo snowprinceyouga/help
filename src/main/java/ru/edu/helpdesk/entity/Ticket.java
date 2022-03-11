@@ -3,11 +3,10 @@ package ru.edu.helpdesk.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @Entity
-public class Ticket implements Serializable {
+public class Ticket {
     @Id
     @GeneratedValue
     private Long id;
@@ -22,5 +21,5 @@ public class Ticket implements Serializable {
     private String title;
 
     @Enumerated(EnumType.ORDINAL)
-    private TicketStatus status;
+    private TicketStatus status = TicketStatus.OPEN;
 }

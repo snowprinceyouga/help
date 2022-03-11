@@ -1,13 +1,16 @@
 package ru.edu.helpdesk.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class User implements Serializable {
+public class User {
     @Id
     @GeneratedValue
     private Long id;
@@ -22,5 +25,6 @@ public class User implements Serializable {
 
     private String lastName;
 
-    private String role;
+    @Enumerated(EnumType.ORDINAL)
+    private UserRole role = UserRole.USER;
 }
