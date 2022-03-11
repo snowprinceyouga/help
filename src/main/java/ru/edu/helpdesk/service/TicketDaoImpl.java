@@ -1,8 +1,17 @@
 package ru.edu.helpdesk.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.edu.helpdesk.entity.Ticket;
+import ru.edu.helpdesk.entity.User;
+import ru.edu.helpdesk.repository.TicketRepository;
+
+import java.util.List;
 
 public class TicketDaoImpl implements TicketDao{
+
+    @Autowired
+    private TicketRepository ticketRepository;
+
     /**
      * Создание ticket
      *
@@ -20,7 +29,12 @@ public class TicketDaoImpl implements TicketDao{
      * @return Ticket
      */
     @Override
-    public Ticket ticketInfo(Integer id) {
-        return null;
+    public Ticket ticketInfo(long id) {
+        return ticketRepository.getById(id);
+    }
+
+    @Override
+    public List<Ticket> allTicketsByClientId(long clientId) {
+        return ticketRepository.getAllByClient_Id(clientId);
     }
 }
