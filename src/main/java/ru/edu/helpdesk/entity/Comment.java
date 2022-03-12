@@ -3,11 +3,10 @@ package ru.edu.helpdesk.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Data
 @Entity
-public class Comment implements Serializable {
+public class Comment {
     @Id
     @GeneratedValue
     private Long id;
