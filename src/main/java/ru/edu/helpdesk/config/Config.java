@@ -10,5 +10,7 @@ import ru.edu.helpdesk.service.TicketDaoImpl;
 public class Config {
 
     @Bean
-    public TicketDaoImpl ticketBean(){return new TicketDaoImpl();}
+    public TicketDaoImpl ticketBean(){
+        return new TicketDaoImpl();
+    }
 }

@@ -1,5 +1,6 @@
 package ru.edu.helpdesk.controller;
 
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import ru.edu.helpdesk.entity.Ticket;
 import ru.edu.helpdesk.repository.TicketRepository;
 import ru.edu.helpdesk.service.TicketDaoImpl;
 
+@Log4j2
 @Controller
 public class HelpdeskController {
 
