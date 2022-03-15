@@ -4,7 +4,7 @@ import ru.edu.helpdesk.entity.Ticket;
 
 import java.util.List;
 
-public interface TicketDao {
+public interface TicketService {
 
     /**
      * Создание ticket
