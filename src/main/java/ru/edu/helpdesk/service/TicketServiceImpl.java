@@ -1,14 +1,15 @@
 package ru.edu.helpdesk.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.edu.helpdesk.entity.Ticket;
-import ru.edu.helpdesk.entity.User;
 import ru.edu.helpdesk.repository.TicketRepository;
 
 
 import java.util.List;
 
-public class TicketDaoImpl implements TicketDao{
+@Service
+public class TicketServiceImpl implements TicketService {
 
     @Autowired
     private TicketRepository ticketRepository;

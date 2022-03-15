@@ -21,7 +21,7 @@ public class HelpdeskSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/ticket/**").hasRole("ADMIN")
+                //.antMatchers("/ticket/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin();

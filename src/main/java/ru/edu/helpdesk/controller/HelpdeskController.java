@@ -6,28 +6,32 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import ru.edu.helpdesk.entity.Ticket;
-import ru.edu.helpdesk.repository.TicketRepository;
-import ru.edu.helpdesk.service.TicketDaoImpl;
+import ru.edu.helpdesk.service.CommentServiceImpl;
+import ru.edu.helpdesk.service.TicketServiceImpl;
 
 @Log4j2
 @Controller
 public class HelpdeskController {
 
-    private TicketDaoImpl ticketDao;
+    private TicketServiceImpl ticketService;
+    private CommentServiceImpl commentService;
+
 
     @Autowired
-    public void setTicketDao(TicketDaoImpl ticketDao){this.ticketDao = ticketDao;}
+    public void setTicketService(TicketServiceImpl ticketService){this.ticketService = ticketService;}
+
+    @Autowired
+    public void setCommentService(CommentServiceImpl commentService){this.commentService = commentService;}
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("tickets", ticketDao.allTicketsByClientId(1L));
+        model.addAttribute("tickets", ticketService.allTicketsByClientId(1L));
         return "hello";
     }
     @GetMapping("/ticket/{id}")
     public String ticketInfo(@PathVariable("id") long id, Model model){
-        model.addAttribute("ticketinfo", ticketDao.ticketInfo(id));
+        model.addAttribute("ticketinfo", ticketService.ticketInfo(id));
+        model.addAttribute("messages", commentService.allMessageByTicketId(id));
         return "ticketInfo";
     }
 }
