@@ -23,4 +23,9 @@ public interface TicketService {
      * найти все ticket по id клиента
      */
     List<Ticket> allTicketsByClientId(long clientId);
+
+    /**
+     * найти все ticket по login клиента
+     */
+    List<Ticket> allTicketsByLogin(String login);
 }
