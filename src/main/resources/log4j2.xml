@@ -13,7 +13,7 @@
     </Appenders>
 
     <Loggers>
-        <Logger name= "ru.javastudy.examples.User" level="DEBUG" additivity="false">
+        <Logger name= "ru.edu.helpdesk" level="DEBUG" additivity="true">
             <AppenderRef ref="Console"/>
         </Logger>
 

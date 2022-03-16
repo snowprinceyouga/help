@@ -40,8 +40,20 @@ public class TicketServiceImpl implements TicketService {
         return ticketRepository.getById(id);
     }
 
+    /**
+     * найти все ticket по id клиента
+     */
     @Override
     public List<Ticket> allTicketsByClientId(long clientId) {
         return ticketRepository.getAllByClient_Id(clientId);
+    }
+
+    /**
+     * Найти все тикеты
+     * @return
+     */
+    @Override
+    public List<Ticket> allTickets() {
+        return ticketRepository.findAll();
     }
 }

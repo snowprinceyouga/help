@@ -27,4 +27,9 @@ public class User {
 
     @Enumerated(EnumType.ORDINAL)
     private UserRole role = UserRole.USER;
+
+    @Override
+    public String toString() {
+        return login;
+    }
 }
