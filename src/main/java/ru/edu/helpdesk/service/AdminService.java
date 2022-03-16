@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface AdminService {
     List<User> usersList();
+
+    void saveUser(User user);
 }
