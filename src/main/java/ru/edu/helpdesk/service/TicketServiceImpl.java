@@ -44,14 +44,4 @@ public class TicketServiceImpl implements TicketService {
     public List<Ticket> allTicketsByClientId(long clientId) {
         return ticketRepository.getAllByClient_Id(clientId);
     }
-
-    @Override
-    public List<Ticket> allTicketsByLogin(String login) {
-        User user = userRepository.findByLogin(login);
-        if (user == null) {
-            return Collections.emptyList();
-        } else {
-            return ticketRepository.getAllByClient_Id(user.getId());
-        }
-    }
 }

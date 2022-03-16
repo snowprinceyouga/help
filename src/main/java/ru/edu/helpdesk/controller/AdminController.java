@@ -2,14 +2,15 @@ package ru.edu.helpdesk.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.edu.helpdesk.entity.User;
+import ru.edu.helpdesk.security.HelpdeskUserPrincipal;
 import ru.edu.helpdesk.service.AdminService;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -20,14 +21,12 @@ public class AdminController {
     private AdminService adminService;
 
     @GetMapping()
-    public String index(Model model, Principal principal) {
+    public String index(Model model, @AuthenticationPrincipal HelpdeskUserPrincipal principal) {
         if (principal != null) {
-            final String login = principal.getName();
+            final User current = principal.getUser();
             final List<User> users = adminService.usersList();
-            model.addAttribute("username", login);
+            model.addAttribute("current", current);
             model.addAttribute("users", users);
-        } else {
-            model.addAttribute("username", "Anonymous");
         }
         return "admin/index";
     }
