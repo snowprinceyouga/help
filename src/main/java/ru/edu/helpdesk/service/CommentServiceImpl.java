@@ -18,4 +18,8 @@ public class CommentServiceImpl implements CommentService{
     public List<Comment> allMessageByTicketId(long id) {
         return commentRepository.getCommentsByTicket_Id(id);
     }
+
+    public void createComment(Comment comment){
+        commentRepository.save(comment);
+    }
 }
