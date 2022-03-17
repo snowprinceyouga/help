@@ -17,4 +17,9 @@ public class AdminServiceImpl implements AdminService {
     public List<User> usersList() {
         return userRepository.findAll();
     }
+
+    @Override
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 }
