@@ -12,9 +12,17 @@
 <nav class="navbar navbar-dark bg-primary">
     <div class="container-md">
         <a class="navbar-brand" href="#">Helpdesk</a>
-        <span class="navbar-text">Hello,
-            <span th:text="${current != null ? current.firstName + ' ' + current.lastName : 'Anonymous'}"></span>
-        </span>
+        <div th:if="${current}">
+            <span class="navbar-text">Hello,
+                <span th:text="${current.firstName}">User</span>
+            </span>
+            <span>&nbsp;</span>
+            <a type="button" class="btn btn-secondary" href="/logout">Logout</a>
+        </div>
+        <div th:unless="${current}">
+            <a type="button" class="btn btn-success" href="/login">Login</a>
+            <a type="button" class="btn btn-primary" href="/signup">Signup</a>
+        </div>
     </div>
 </nav>
 <table class="table table-striped">
@@ -29,11 +37,11 @@
     </thead>
     <tbody>
     <tr th:each="ticket : ${tickets}">
-        <td th:text="${ticket.getId()}"></td>
-        <td><a th:href="@{/ticket/{id}(id = ${ticket.getId()})}" th:text="${ticket.getTitle()}"></a></td>
-        <td th:text="${ticket.getClient().getLogin()}"></td>
-        <td th:text="${ticket.getSupport().getLogin()}"></td>
-        <td th:text="${ticket.getStatus()}"></td>
+        <td th:text="${ticket.id}"></td>
+        <td><a th:href="@{/ticket/{id}(id = ${ticket.id})}" th:text="${ticket.title}"></a></td>
+        <td th:text="${ticket.client}"></td>
+        <td th:text="${ticket.support}"></td>
+        <td th:text="${ticket.status}"></td>
     </tr>
     </tbody>
 </table>
