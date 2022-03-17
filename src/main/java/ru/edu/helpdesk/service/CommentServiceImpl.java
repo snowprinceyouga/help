@@ -14,11 +14,20 @@ public class CommentServiceImpl implements CommentService{
     private CommentRepository commentRepository;
 
 
+    /**
+     * Метод CommentServiceImpl#allMessageByTicketId(long id) выводит все комментарии нужного Тикета
+     * @param id нужного нам Тикета
+     * @return
+     */
     @Override
     public List<Comment> allMessageByTicketId(long id) {
         return commentRepository.getCommentsByTicket_Id(id);
     }
 
+    /**
+     * Метод CommentServiceImpl#createComment(Comment comment) создает коменатрий и добавляет его в БД
+     * @param comment новый коментарий
+     */
     public void createComment(Comment comment){
         commentRepository.save(comment);
     }

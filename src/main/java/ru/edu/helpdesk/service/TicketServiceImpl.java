@@ -20,9 +20,8 @@ public class TicketServiceImpl implements TicketService {
     private UserRepository userRepository;
 
     /**
-     * Создание ticket
-     *
-     * @param ticket
+     * Метод TicketServiceImpl#createTicket(Ticket ticket) создает ticket и добавляет его в БД
+     * @param ticket новый ticket
      */
     @Override
     public void createTicket(Ticket ticket) {
@@ -30,10 +29,9 @@ public class TicketServiceImpl implements TicketService {
     }
 
     /**
-     * Просмотр инфо по ticket
-     *
-     * @param id
-     * @return Ticket
+     * Метод TicketServiceImpl#ticketInfo(long id) просматривает информацию по ticket
+     * @param id нужного нам ticket
+     * @return Ticket искомый нами ticket
      */
     @Override
     public Ticket ticketInfo(long id) {
