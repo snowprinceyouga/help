@@ -1,6 +1,7 @@
 package ru.edu.helpdesk.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,21 +16,27 @@ import java.io.IOException;
 public class AuthenticationController {
 
     private boolean passMatch = true;
+    private boolean userExist = false;
 
     @Autowired
     private AdminService adminService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
     public ModelAndView welcome(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("welcome.html");
         passMatch = true;
+        userExist = false;
         return modelAndView;
     }
 
     @GetMapping("/registration")
     public String registrationForm(Model model){
         model.addAttribute("passMatch", passMatch);
+        model.addAttribute("userExist", userExist);
         return "registration";
     }
 
@@ -42,15 +49,19 @@ public class AuthenticationController {
                              @RequestParam("password2") String password2) throws IOException {
 
 
-            if (!password1.equals(password2)){
+        if (adminService.getUserByUsername(userName) != null){
+            userExist = true;
+            response.sendRedirect("/registration");
+        }else if(!password1.equals(password2)){
             passMatch = false;
             response.sendRedirect("/registration");
         }else {
+            String hashedPassword = passwordEncoder.encode(password1);
             User user = new User();
             user.setFirstName(firstname);
             user.setLastName(lastname);
             user.setLogin(userName);
-            user.setPassword(password1);
+            user.setPassword(hashedPassword);
 
             adminService.saveUser(user);
             response.sendRedirect("/login");

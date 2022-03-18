@@ -5,7 +5,10 @@ import ru.edu.helpdesk.entity.User;
 import java.util.List;
 
 public interface AdminService {
+
     List<User> usersList();
 
     void saveUser(User user);
+
+    User getUserByUsername(String username);
 }

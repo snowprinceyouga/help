@@ -3,6 +3,7 @@ package ru.edu.helpdesk.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import ru.edu.helpdesk.entity.*;
 import ru.edu.helpdesk.repository.CommentRepository;
@@ -20,6 +21,9 @@ public class HelpdeskDataLoader implements ApplicationRunner {
 
     @Autowired
     private CommentRepository commentRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public void run(ApplicationArguments args) {
 
@@ -45,9 +49,10 @@ public class HelpdeskDataLoader implements ApplicationRunner {
     }
 
     private User createUser(String login, String password, UserRole role, String firstName, String lastName) {
+        String hashedPassword = passwordEncoder.encode(password);
         User user = new User();
         user.setLogin(login);
-        user.setPassword(password);
+        user.setPassword(hashedPassword);
         user.setRole(role);
         user.setFirstName(firstName);
         user.setLastName(lastName);

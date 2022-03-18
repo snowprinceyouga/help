@@ -16,7 +16,7 @@
     <div class="container-md">
         <a class="navbar-brand">Helpdesk </a>
         <span class="navbar-text">
-            <a th:href="@{/}">HOME</a>
+            <a type="button" class="btn btn-outline-secondary" href="/">HOME</a>
         </span>
     </div>
 </nav>
@@ -28,10 +28,11 @@
         <input type="text" name="lastname" class="form-control" placeholder="Lastname" required="" autofocus=""><br>
         <input type="text" name="userName" class="form-control" placeholder="Username" required="" autofocus=""><br>
         <input type="password" name="password1" class="form-control" placeholder="Password" required="" autofocus=""><br>
-        <input type="password" name="password2" class="form-control" placeholder="Password" required="" autofocus=""><br>
+        <input type="password" name="password2" class="form-control" placeholder="Repeat password" required="" autofocus=""><br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
     </form>
     <div th:if="${!passMatch}">Passwords don't match!</div>
+    <div th:if="${userExist}">User with this login already exists!</div>
 </div>
 </body>
 </html>
