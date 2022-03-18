@@ -41,8 +41,7 @@ public class HelpdeskController {
             final User current = principal.getUser();
             final List<Ticket> tickets = ticketService.allTicketsByClientId(current.getId());
             model.addAttribute("current", current);
-            model.addAttribute("tickets", tickets);
-        }
+            }
         return "hello";
     }
 
@@ -78,18 +77,14 @@ public class HelpdeskController {
         final User current = principal.getUser();
         model.addAttribute("current", current);
         model.addAttribute("ticket",new Ticket());
-        model.addAttribute("comment", new Comment());
         return "newTicket";
     }
 
     @PostMapping("/ticket/new")
-    public String createTicket(@ModelAttribute Ticket ticket,@ModelAttribute Comment comment, @AuthenticationPrincipal HelpdeskUserPrincipal principal) {
+    public String createTicket(@ModelAttribute Ticket ticket, @AuthenticationPrincipal HelpdeskUserPrincipal principal) {
         final User current = principal.getUser();
         ticket.setClient(current);
         ticketService.createTicket(ticket);
-        comment.setUser(current);
-        comment.setTicket(ticket);
-        commentService.createComment(comment);
         return "redirect:/ticket";
     }
 }

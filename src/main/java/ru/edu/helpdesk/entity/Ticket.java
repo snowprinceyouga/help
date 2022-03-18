@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Entity
@@ -24,9 +26,15 @@ public class Ticket {
     private User support;
 
     @Column(nullable = false)
-    private String title;
+    private String description;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Title title;
 
     @Enumerated(EnumType.ORDINAL)
     private TicketStatus status = TicketStatus.OPEN;
+
+    @Column
+    private LocalDateTime creationAt = LocalDateTime.now();
 
 }

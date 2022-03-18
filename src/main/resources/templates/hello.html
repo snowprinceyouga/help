@@ -22,28 +22,9 @@
         <div th:unless="${current}">
             <a type="button" class="btn btn-success" href="/login">Login</a>
             <a type="button" class="btn btn-primary" href="/signup">Signup</a>
+            <a type="button" class="btn btn-primary" href="/admin">Admin</a>
         </div>
     </div>
 </nav>
-<table class="table table-striped">
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Ticket's title</th>
-        <th scope="col">Author</th>
-        <th scope="col">Support</th>
-        <th scope="col">Status</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="ticket : ${tickets}">
-        <td th:text="${ticket.id}"></td>
-        <td><a th:href="@{/ticket/{id}(id = ${ticket.id})}" th:text="${ticket.title}"></a></td>
-        <td th:text="${ticket.client}"></td>
-        <td th:text="${ticket.support}"></td>
-        <td th:text="${ticket.status}"></td>
-    </tr>
-    </tbody>
-</table>
 </body>
 </html>

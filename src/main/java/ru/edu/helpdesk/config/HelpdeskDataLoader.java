@@ -10,6 +10,7 @@ import ru.edu.helpdesk.repository.CommentRepository;
 import ru.edu.helpdesk.repository.TicketRepository;
 import ru.edu.helpdesk.repository.UserRepository;
 
+
 @Component
 public class HelpdeskDataLoader implements ApplicationRunner {
 
@@ -36,9 +37,9 @@ public class HelpdeskDataLoader implements ApplicationRunner {
         User user1 = createUser("user1", "user1", UserRole.USER, "Olga", "Lapenok");
         User user2 = createUser("user2", "user2", UserRole.USER, "Sergey", "Malyshev");
 
-        Ticket ticket1 = createTicket("Hello user1", TicketStatus.WORKING, user1, support);
-        Ticket ticket2 = createTicket("Title2", TicketStatus.OPEN, user1, support);
-        Ticket ticket3 = createTicket("Message user2", TicketStatus.OPEN, user2, null);
+        Ticket ticket1 = createTicket(Title.Problem_with_PC,"1111", TicketStatus.WORKING, user1, support);
+        Ticket ticket2 = createTicket(Title.Problem_with_NETWORK,"1111", TicketStatus.OPEN, user1, support);
+        Ticket ticket3 = createTicket(Title.Problem_with_NETWORK,"111", TicketStatus.OPEN, user2, null);
 
         createComment(ticket1, user1, "comment ticket1");
         createComment(ticket2, user1, "comment ticket2");
@@ -59,9 +60,10 @@ public class HelpdeskDataLoader implements ApplicationRunner {
         return userRepository.save(user);
     }
 
-    private Ticket createTicket(String title, TicketStatus status, User client, User support) {
+    private Ticket createTicket(Title title, String description, TicketStatus status, User client, User support) {
         Ticket ticket = new Ticket();
         ticket.setTitle(title);
+        ticket.setDescription(description);
         ticket.setStatus(status);
         ticket.setClient(client);
         ticket.setSupport(support);
