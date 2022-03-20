@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * Сущность клиента(пользователя, сотрудника тех.поддержки)
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
