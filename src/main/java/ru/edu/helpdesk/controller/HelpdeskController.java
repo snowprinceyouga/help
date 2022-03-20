@@ -39,7 +39,7 @@ public class HelpdeskController {
 
         if (principal != null) {
             final User current = principal.getUser();
-            final List<Ticket> tickets = ticketService.allTicketsByClientId(current.getId());
+      //      final List<Ticket> tickets = ticketService.allTicketsByClientId(current.getId());
             model.addAttribute("current", current);
             }
         return "hello";

@@ -6,6 +6,7 @@ import lombok.NonNull;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 @Data
@@ -35,6 +36,18 @@ public class Ticket {
     private TicketStatus status = TicketStatus.OPEN;
 
     @Column
-    private LocalDateTime creationAt = LocalDateTime.now();
+    private String creationAt = dateFormat();
+
+    /**
+     * Красивая дата
+     * @return
+     */
+    private String dateFormat() {
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
+        String formatDateTime = now.format(formatter);
+        return formatDateTime;
+    }
+
 
 }
