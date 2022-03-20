@@ -4,9 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.edu.helpdesk.entity.Comment;
 import ru.edu.helpdesk.repository.CommentRepository;
-
 import java.util.List;
 
+/**
+ * Сервис, реализующий связь между таблицей comment базы данных и интерфейса
+ */
 @Service
 public class CommentServiceImpl implements CommentService{
 
@@ -29,6 +31,8 @@ public class CommentServiceImpl implements CommentService{
      * @param comment новый коментарий
      */
     public void createComment(Comment comment){
+
         commentRepository.save(comment);
+        System.out.println("OK");
     }
 }

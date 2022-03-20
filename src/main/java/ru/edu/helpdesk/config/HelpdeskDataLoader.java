@@ -10,7 +10,9 @@ import ru.edu.helpdesk.repository.CommentRepository;
 import ru.edu.helpdesk.repository.TicketRepository;
 import ru.edu.helpdesk.repository.UserRepository;
 
-
+/**
+ * Имплементируем интерфейс ApplicationRunner для наполнения таблиц в базе данных при запуске приложения
+ */
 @Component
 public class HelpdeskDataLoader implements ApplicationRunner {
 

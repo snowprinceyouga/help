@@ -1,5 +1,6 @@
 package ru.edu.helpdesk.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -8,9 +9,14 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+/**
+ * Заявка на тех.поддержку
+ *
+ */
 @Data
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

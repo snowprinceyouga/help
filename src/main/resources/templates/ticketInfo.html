@@ -23,7 +23,7 @@
     </div>
 </nav>
 <div class="container">
-
+    <h3>Информация о заявке:</h3>
 <table class="table table-striped table-bordered">
     <thead>
     <tr>
@@ -41,11 +41,44 @@
             <td th:text="${ticketInfo.title}"></td>
             <td th:text="${ticketInfo.description}"></td>
             <td th:text="${ticketInfo.creationAt}"></td>
-            <td th:text="${ticketInfo.support.login}"></td>
+            <td th:if="${ticketInfo.support != null}" th:text="${ticketInfo.support.login}"></td>
+            <td th:if="${ticketInfo.support == null}">Не назначен</td>
             <td th:text="${ticketInfo.status}"></td>
         </tr>
     </tbody>
 </table>
+
+    <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">Сообщение</th>
+            <th scope="col">Автор</th>
+            <th scope="col">Дата</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="message : ${messages}">
+            <td th:text="${message.message}"></td>
+            <td th:text="${message.user.login}"></td>
+            <td th:text="${message.creationAt}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <form class="col card p-3 my-5" th:method="post" th:action="@{/ticket/{id}(id = ${ticketInfo.id})}">
+         <div class="form-group">
+            <label for="message">Отправить новое сообщение</label>
+            <input class="form-control" id="message" placeholder="Введите сообщение" required autocomplete="off"
+                   th:field="*{comment.message}"
+                   type="text"/>
+        </div>
+        <br>
+        <div>
+            <input class="btn btn-primary" type="submit" value="Отправить">
+
+        </div>
+    </form>
 </div>
 </body>
 </html>
